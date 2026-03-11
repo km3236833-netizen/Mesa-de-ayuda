@@ -25,15 +25,34 @@
              <input type="submit" class="fadeIn fourth" value="Entrar">
              </form>
 
-              <!-- Remind Passowrd -->
-             <div id="formFooter">
-              <a class="underlineHover" href="#">Go to the Site</a>
-              </div>
-
+              <a class="underlineHover" href="#" data-toggle="modal" data-target="#modalContacto">
+                   Contactar con el administrador
+             </a>
         </div>
     </div>
+
+<div class="modal fade" id="modalContacto" tabindex="-1" role="dialog" aria-labelledby="modalContactoLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalContactoLabel">Contacto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Si no tienes una credencial llama al: <strong>5536251689</strong>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="public/jquery/jquery-3.6.0.min.js"></script>
 <script src="public/bootstrap/popper.min.js"></script>
 <script src="public/bootstrap/bootstrap.min.js"></script>
+<script src="public/js/usuarios/login.js"> </script>
 </body>
 </html>
