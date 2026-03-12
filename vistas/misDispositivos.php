@@ -1,4 +1,11 @@
-<?php include "header.php"?>
+<?php 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+include "header.php";
+if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol']==1){
+
+
+?>
 
 <!-- Page Content -->
 <div class="container">
@@ -9,6 +16,10 @@
   </div>
 </div>
 
-<?php include "footer.php"?>
+<?php include "footer.php";
+} else {
+  header("location:../index.html");
+}
+?>
 
    

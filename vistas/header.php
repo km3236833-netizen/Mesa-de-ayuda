@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,12 +33,14 @@ Edit in JSFiddle
         <li class="nav-item active">
           <a class="nav-link" href="inicio.php">Inicio</a>
         </li>
+        <?php if($_SESSION['usuario']['rol']== 1){ ?>
         <li class="nav-item">
           <a class="nav-link" href="misDispositivos.php">Mis Dispositivos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="misReportes.php">Mis Reportes Soporte</a>
         </li>
+        <?php } else if($_SESSION['usuario']['rol']== 2){?>
 <!--De aqui en adelante son las vistas del administrador-->
         <li class="nav-item">
           <a class="nav-link" href="usuario.php">Usuario</a>
@@ -46,14 +51,15 @@ Edit in JSFiddle
         <li class="nav-item">
           <a class="nav-link" href="reportes.php">Reportes Soporte</a>
         </li>
+        <?php } ?>
         <li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Usuario
+  <a style="color: blue" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Usuario <?php echo $_SESSION ['usuario']['nombre']?>
   </a>
   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
     <a class="dropdown-item" href="#">Editar datos </a>
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Salir</a>
+    <a class="dropdown-item" href="../procesos/usuarios/login/salir.php">Salir</a>
   </div>
 </li>
       </ul>

@@ -1,7 +1,12 @@
 <?php 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-include "header.php"?>
+include "header.php";
+if (isset($_SESSION['usuario']) &&
+ $_SESSION['usuario']['id']==1||$_SESSION['usuario']['id'] ==2 ){
+
+
+?>
 
 <!-- Page Content -->
 <div class="container">
@@ -12,6 +17,10 @@ include "header.php"?>
   </div>
 </div>
 
-<?php include "footer.php"?>
+<?php include "footer.php";
+} else {
+  header("location:../index.html");
+}
+?>
 
    
