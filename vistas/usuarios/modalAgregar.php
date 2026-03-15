@@ -33,7 +33,7 @@
                 <select class="form-control" id="sexo" name="sexo" > 
                    <option value=""></option>
                    <option value="F">Femenino</option>
-                   <option value="M">Femenino</option>
+                   <option value="M">Masculino</option>
                </select>
               </div>
              <div class="col-sm-4">
