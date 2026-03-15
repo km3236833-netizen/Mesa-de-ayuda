@@ -17,7 +17,7 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] ==2 ){
           Agregar Usuario
         </button>
          <hr>
-         <div id="tablaUsuariosLoad" ></div>
+         <div id="tablaUsuariosLoad"></div>
       </p>   
   </div>
 </div>

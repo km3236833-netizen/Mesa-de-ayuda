@@ -27,9 +27,10 @@ $respuesta = mysqli_query($conexion, $sql);
 ?>
 
 
-<table class="table table-sm " id="tablaUsuariosDataTable">
+<table class="table table-sm dt-responsive nowrap" 
+id="tablaUsuariosDataTable" style="width:100%">
      <thead>
-    <th>Apellido paterno</th>
+    <th>Apellido paterno</th> 
     <th>Apellido materno</th>
     <th>Nombre</th>
     <th>Edad</th>
@@ -37,9 +38,10 @@ $respuesta = mysqli_query($conexion, $sql);
     <th>Telefono</th>
     <th>Cooreo</th>
     <th>Usuario</th>
+    <th>Ubicacion</th>
     <th>Reset Password</th>
     <th>Cambiar Rol</th>
-    <th>Ubicacion</th>
+    <th>Activar</th>
     <th>Editar</th>
     <th>Eliminar</th>
     </thead>
@@ -56,6 +58,7 @@ $respuesta = mysqli_query($conexion, $sql);
             <td><?php echo $mostrar['telefono']; ?></td>
             <td><?php echo $mostrar['correo']; ?></td>
             <td><?php echo $mostrar['nombreUsuario']; ?></td>
+            <td><?php echo $mostrar['ubicacion']; ?></td>
             <td>
                 <button class="btn btn-success btn-sm ">
                     Cambiar password
@@ -66,10 +69,26 @@ $respuesta = mysqli_query($conexion, $sql);
                     Cambiar Rol
                 </button>
             </td>
-            <td><?php echo $mostrar['ubicacion']; ?></td>
+            <td>
+                <?php if ($mostrar['estatus'] ==1) { 
+                ?>
+                    <button class="btn btn-warning btn-sm">
+                    Activo
+                    </button>
+                <?php 
+                    } else { 
+                ?>
+                    <button class="btn btn-warning btn-sm">
+                    Inactivo
+                    </button>
+                <?php 
+                    }
+                ?>
+            </td>
             <td><button class="btn btn-warning btn-sm">
                     Editar
-                </button></td>
+                </button>
+            </td>
             <td>
                 <button class="btn btn-danger btn-sm">
                     Eliminar
