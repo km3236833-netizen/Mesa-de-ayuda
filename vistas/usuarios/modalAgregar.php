@@ -1,4 +1,4 @@
-<form actions="frmAgregarUsuario" method="POST" onsubmit="return agregarNuevoUsuario()">
+<form action="frmAgregarUsuario" method="POST" onsubmit="return agregarNuevoUsuario()">
     <div class="modal fade" id="modalAgregarUsuarios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -16,7 +16,7 @@
              </div>
             <div class="col-sm-4">
                 <label for="materno">Apellido Materno</label>
-                <input type="text" class="form-control" id="materno" name="paterno" required> 
+                <input type="text" class="form-control" id="materno" name="materno" required> 
             </div>
             <div class="col-sm-4">
                 <label for="nombre">Nombre</label>
@@ -25,8 +25,8 @@
          </div>   
          <div class="row">
              <div class="col-sm-4">
-                <label for="fecha_nacimiento">Fecha de nacimiento</label>
-                <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" > 
+                <label for="fechaNacimiento">Fecha de nacimiento</label>
+                <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" > 
              </div>
              <div class="col-sm-4">
                 <label for="sexo">Sexo</label>
@@ -58,7 +58,7 @@
          <div class="row">
             <div class="col-sm-12">
                <label for="idRol">Rol de Usuario</label>
-               <select  class="form-control" id="paterno" name="idRol" > 
+               <select  class="form-control" id="idRol" name="idRol" > 
                    <option value="1">Cliente</option>
                    <option value="2">Administrador</option>
                </select>
@@ -78,4 +78,3 @@
     </div>
   </div>
 </form>   
-
