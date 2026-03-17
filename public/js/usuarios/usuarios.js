@@ -22,3 +22,16 @@ function agregarNuevoUsuario(){
 
     return false;
 }
+
+function obtenerDatosUsuario(idUsuario){
+    $.ajax({
+        type: "POST",
+        data: "idUsuario=" + idUsuario,
+        url:"/Mesa-de-ayuda/procesos/usuarios/crud/obtenerDatosUsuarios.php",
+        success:function(respuesta){
+            respuesta = jQuery.parseJSON(respuesta);
+            consola.log(respuesta);
+        }
+    });
+
+}

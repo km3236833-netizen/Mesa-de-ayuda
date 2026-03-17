@@ -2,6 +2,7 @@
 include "conexion.php";  
 
 class Usuarios extends Conexion {
+    
     public function loginUsuario($usuario, $password) {
         $conexion = $this->conectar();
         if (!$conexion) {
@@ -25,5 +26,115 @@ class Usuarios extends Conexion {
             return "0";
         }
     }
-}
+
+    
+    public function agregaNuevoUsuario($datos) {
+        $conexion = $this->conectar();
+        
+        // 1. Insertar persona y obtener su ID
+        $idPersona = $this->agregarPersona($datos);
+        
+        if ($idPersona > 0) {
+            // 2. Insertar usuario con el ID de persona obtenido
+            $sql = "INSERT INTO t_usuarios (id_rol, id_persona, usuario, password, ubicacion)
+                    VALUES (?, ?, ?, ?, ?)";
+            $query = $conexion->prepare($sql);
+            $query->bind_param(
+                "iisss",
+                $datos['idRol'],
+                $idPersona,
+                $datos['usuario'],
+                $datos['password'],
+                $datos['ubicacion']
+            );
+            
+            if ($query->execute()) {
+                $respuesta = 1;
+            } else {
+                $respuesta = 0;
+                error_log("Error al insertar en t_usuarios: " . $conexion->error);
+            }
+            $query->close();
+            return $respuesta;
+        } else {
+            return 0;
+        }
+    }
+
+    
+    public function agregarPersona($datos) {
+        $conexion = $this->conectar();
+        $sql = "INSERT INTO t_persona (paterno, materno, nombre, fecha_nacimiento, sexo, telefono, correo)
+                VALUES (?, ?, ?, ?, ?, ?, ?)";    
+        $query = $conexion->prepare($sql);
+        $query->bind_param(
+            "sssssss",
+            $datos['paterno'],
+            $datos['materno'],
+            $datos['nombre'],
+            $datos['fechaNacimiento'],
+            $datos['sexo'],
+            $datos['telefono'],
+            $datos['correo']
+        );
+        
+        if ($query->execute()) {
+            $idPersona = $conexion->insert_id;
+        } else {
+            $idPersona = 0;
+            error_log("Error al insertar en t_persona: " . $conexion->error);
+        }
+        $query->close();
+        return $idPersona;
+    }
+
+    public function obtenerDatosUsuario($idUsuario) {
+    $conexion = $this->conectar();
+
+        $sql ="SELECT
+                usuarios.id_usuario AS idUsuario,
+                usuarios.usuario AS nombreUsuario,
+                 roles.nombre AS rol,
+                usuarios.id_rol AS idRol,
+                usuarios.ubicacion AS ubicacion,
+                usuarios.activo AS estatus,
+                usuarios.id_persona AS idPersona,
+                 persona.nombre AS nombrePersona,
+                persona.paterno AS paterno,
+                persona.materno AS materno,
+                persona.fecha_nacimiento AS fechaNacimiento,
+                persona.sexo AS sexo,
+                persona.correo AS correo,
+                 persona.telefono AS telefono   
+            FROM 
+                t_usuarios AS usuarios 
+                    INNER JOIN
+                t_cat_roles AS roles ON usuarios.id_rol = roles.id_rol 
+                    INNER JOIN
+                t_persona AS persona ON usuarios.id_persona = persona.id_persona 
+                AND usuarios.id_usuario = '$idUsuario'";
+        $respuesta = mysqli_query($conexion,$sql);
+        $usuario = mysqli_fetch_array($respuesta);
+
+        $datos = array(
+                'idUsuario' => $usuario['idUsuario'],
+                'nombreUsuario' => $usuario['nombreUsuario'],
+                'rol' => $usuario['rol'],
+                'idRol' => $usuario['idRol'],
+                'ubicacion' => $usuario['ubicacion'],
+                'estatus' => $usuario['estatus'],
+                'idPersona' => $usuario['idPersona'],
+                'nombrePersona' => $usuario['nombrePersona'],
+                'paterno' => $usuario['paterno'],
+                'materno' => $usuario['materno'],
+                'fechaNacimiento' => $usuario['fechaNacimiento'],
+                'sexo' => $usuario['sexo'],
+                'correo' => $usuario['correo'],
+                'telefono' => $usuario['telefono']
+                );
+        return $datos;
+        
+        }
+    }
+
 ?>
