@@ -9,6 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
+         <input type="text" id="idUsuario" name="idUsuario" hidden>
         <div class="row">
              <div class="col-sm-4">
                 <label for="paternou">Apellido paternou</label>
