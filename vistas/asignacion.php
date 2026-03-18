@@ -19,7 +19,7 @@ error_reporting(E_ALL);
             Asignar equipo
           </button> 
           <hr>
-          <div id="#">
+          <div id="tablaAsignacionesLoad">
           </div>
         </p>
       </div>
@@ -27,11 +27,15 @@ error_reporting(E_ALL);
 </div>
 
 <?php 
-include 'modalAsignar.php';
-include "footer.php";
+    include  "asignacion/modalAsignar.php";
+    include "footer.php";
+?>
+    <script src="../public/js/asignacion/asignacion.js"></script>
+<?php 
 } else {
   header("location:../index.html");
 }
+
 ?>
 
    

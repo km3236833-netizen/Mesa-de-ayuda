@@ -54,13 +54,7 @@ function actualizarUsuario(){
         url:"/Mesa-de-ayuda/procesos/usuarios/crud/actualizarUsuario.php",
         success:function(respuesta){
         respuesta = respuesta.trim();
-        if(respuesta == 1){
-                $('#tablaUsuariosLoad').load("usuarios/tablaUsuarios.php");
-                $('#modalActualizarUsuarios').modal('hide');
-                Swal.fire(":D","Actualizado con exito!","success");
-            } else { 
-                 Swal.fire("Error", "No se pudo actualizar el usuario. Código: " + respuesta, "error");    
-            }
+        console.log(respuesta);
         }
     });
     return false;

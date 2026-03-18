@@ -218,3 +218,35 @@ id_persona,
 concat(paterno, " ",materno, " ",nombre) as nombre 
 FROM 
 t_persona;
+
+
+SELECT
+    persona.id_persona,
+    CONCAT(persona.paterno, ' ', persona.materno), '',
+    persona.nombre) AS nombrePersona
+FROM
+    t_persona AS persona
+INNER JOIN
+    t_usuario AS usuario ON persona.id_persona = usuario.id_persona
+    AND usuario.id_rol = 1
+ORDER BY persona.paterno;
+
+
+
+CREATE TABLE IF NOT EXISTS `t_asignacion` (
+    `id_asignacion` INT NOT NULL AUTO_INCREMENT,
+    `id_cat_equipo` INT NOT NULL,
+    `id_persona` INT NOT NULL,  
+    `marca` VARCHAR(245) DEFAULT NULL,
+    `modelo` VARCHAR(245) DEFAULT NULL,
+    `color` VARCHAR(245) DEFAULT NULL,
+    `descripcion` VARCHAR(245) DEFAULT NULL,  
+    `memoria` VARCHAR(245) DEFAULT NULL,
+    `disco_duro` VARCHAR(245) DEFAULT NULL,
+    `procesador` VARCHAR(245) DEFAULT NULL,
+    PRIMARY KEY (`id_asignacion`),
+    KEY `fk_asignacion_equipo_idx` (`id_cat_equipo`),
+    KEY `fk_asignacion_persona_idx` (`id_persona`),
+    CONSTRAINT `fk_asignacion_equipo` FOREIGN KEY (`id_cat_equipo`) REFERENCES `t_cat_equipo` (`id_equipo`) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT `fk_asignacion_persona` FOREIGN KEY (`id_persona`) REFERENCES `t_persona` (`id_persona`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
