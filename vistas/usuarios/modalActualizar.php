@@ -1,4 +1,4 @@
-<form action="frmActualizarUsuario" method="POST" onsubmit="return obtenerDatosUsuario()">
+<form action="frmActualizarUsuario" method="POST" onsubmit="return actualizarUsuario()">
     <div class="modal fade" id="modalActualizarUsuarios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">

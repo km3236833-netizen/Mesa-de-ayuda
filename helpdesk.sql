@@ -184,3 +184,12 @@ INNER JOIN
  t_cat_roles AS roles ON usuarios.id_rol = roles.id_rol 
 INNER JOIN
  t_persona AS persona ON usuarios.id_persona = persona.id_persona and usuarios.id_usuario = 3;
+
+
+ SELECT
+    persona.id_persona AS idPersona
+FROM
+    t_usuarios AS usuarios
+    INNER JOIN
+    t_persona AS persona ON usuarios.id_persona = persona.id_persona
+    AND usuarios.id_usuario = 1;
