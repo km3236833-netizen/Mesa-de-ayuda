@@ -193,3 +193,22 @@ FROM
     INNER JOIN
     t_persona AS persona ON usuarios.id_persona = persona.id_persona
     AND usuarios.id_usuario = 1;
+
+    
+CREATE TABLE IF NOT EXISTS `t_cat_equipo` (
+  `id_equipo` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(245) NOT NULL,
+  `description` VARCHAR(245) DEFAULT NULL,
+  PRIMARY KEY (`id_equipo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO t_cat_equipo (nombre) VALUES
+('PC'),
+('Laptop'),
+('Mouse'),
+('Teclado'),
+('Monitor'),
+('Bocinas'),
+('Micrófono'),
+('Proyector');
+
