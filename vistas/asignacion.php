@@ -27,7 +27,7 @@ error_reporting(E_ALL);
 </div>
 
 <?php 
-include "asignacion/modalAsignar.php";
+include 'modalAsignar.php';
 include "footer.php";
 } else {
   header("location:../index.html");

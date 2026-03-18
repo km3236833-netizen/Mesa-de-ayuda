@@ -212,3 +212,9 @@ INSERT INTO t_cat_equipo (nombre) VALUES
 ('Micrófono'),
 ('Proyector');
 
+
+SELECT 
+id_persona,
+concat(paterno, " ",materno, " ",nombre) as nombre 
+FROM 
+t_persona;
